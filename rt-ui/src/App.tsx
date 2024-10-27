@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { NavLink, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import DbContentChanges from './pages/DbContentChanges';
-import Plates from './pages/GrandPrix';
+import Plates from './pages/Plates';
 
 const App = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);

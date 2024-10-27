@@ -1,9 +1,8 @@
 import { Container, Typography, Button, Divider, Stack } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import { baseUrl } from '../constants';
 
 const Home = () => {
-    const apiUrl = `${baseUrl}/swagger`;
+    const apiUrl = `https://localhost:7168/swagger`;
 
     const menuItems = [
         { label: "Plates", path: "/plates" },

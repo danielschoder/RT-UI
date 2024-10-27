@@ -1,18 +1,18 @@
 import React from 'react';
 import { Container, Typography, Button } from '@mui/material';
 import { useFetchData } from '../hooks/useFetchData';
-import { baseUrl } from '../constants';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
 
 interface BaseListPage<T> {
     title: string;
-    url: string;
+    serviceUrl: string;
+    endpoint: string;
     renderList: (data: T) => React.ReactNode;
 }
 
-function ApiPage<T>({ title, url, renderList }: BaseListPage<T>) {
-    const apiUrl = `${baseUrl}${url}`;
+function ApiPage<T>({ title, serviceUrl, endpoint, renderList }: BaseListPage<T>) {
+    const apiUrl = `${serviceUrl}${endpoint}`;
     const { data, loading, error } = useFetchData<T>(apiUrl);
 
     if (loading) { return <Loading />; }
@@ -32,7 +32,7 @@ function ApiPage<T>({ title, url, renderList }: BaseListPage<T>) {
                     rel="noopener noreferrer"
                     style={{ textTransform: 'lowercase' }}
                 >
-                    {url}
+                    {endpoint}
                 </Button>
             </Typography>
             {data ? renderList(data) : null}
