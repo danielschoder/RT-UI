@@ -2,15 +2,13 @@ import { Container, Typography, Button, Divider, Stack } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 
 const Home = () => {
-    const apiUrl = `https://localhost:7168/swagger`;
-
     const menuItems = [
         { label: "Plates", path: "/plates" },
         { label: "Audit", path: "/audit" }
     ];
 
     const renderMenuButton = (label: string, path: string) => (
-        <Button variant="text" component={RouterLink} to={path}>
+        <Button key={path} variant="text" component={RouterLink} to={path}>
             {label}
         </Button>
     );

@@ -1,6 +1,6 @@
 import { List, ListItem, ListItemText, Typography } from '@mui/material';
 import { PlateBasicDto } from '../interfaces/PlateBasicDto.ts';
-import BaseListPage from './BaseListPage.tsx';
+import PlatesBase from './PlatesBase.tsx';
 
 function Plates() {
     const formatCurrency = (amount: number) => {
@@ -8,7 +8,7 @@ function Plates() {
     };
 
     return (
-        <BaseListPage<PlateBasicDto>
+        <PlatesBase<PlateBasicDto>
             title = "Plates"
             serviceUrl= "http://localhost:5101"
             endpoint= "/api/plates"
