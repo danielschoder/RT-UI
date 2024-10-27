@@ -8,12 +8,12 @@ import Error from '../components/Error';
 interface BaseListPage<T> {
     title: string;
     url: string;
-    renderList: (data: T[]) => React.ReactNode; // Function to render the list
+    renderList: (data: T) => React.ReactNode;
 }
 
 function ApiPage<T>({ title, url, renderList }: BaseListPage<T>) {
     const apiUrl = `${baseUrl}${url}`;
-    const { data, loading, error } = useFetchData<T[]>(apiUrl);
+    const { data, loading, error } = useFetchData<T>(apiUrl);
 
     if (loading) { return <Loading />; }
     if (error) { return <Error error={error} />; }
@@ -35,7 +35,7 @@ function ApiPage<T>({ title, url, renderList }: BaseListPage<T>) {
                     {url}
                 </Button>
             </Typography>
-            {renderList(data || [])}
+            {data ? renderList(data) : null}
         </Container>
     );
 }

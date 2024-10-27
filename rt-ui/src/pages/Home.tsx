@@ -3,18 +3,11 @@ import { Link as RouterLink } from 'react-router-dom';
 import { baseUrl } from '../constants';
 
 const Home = () => {
-    const apiUrl = `${baseUrl}/scalar/v1`;
+    const apiUrl = `${baseUrl}/swagger`;
 
     const menuItems = [
-        { label: "Seasons", path: "/seasons" },
-        { label: "Grand Prix", path: "/grandprix" },
-        { label: "Drivers", path: "/drivers" },
-        { label: "Constructors", path: "/constructors" },
-        { label: "Circuits", path: "/circuits" },
-        { label: "Races", path: "/races" },
-        { label: "Sessions", path: "/sessions" },
-        { label: "Results", path: "/results" },
-        { label: "Session Types", path: "/sessiontypes" }
+        { label: "Plates", path: "/plates" },
+        { label: "Audit", path: "/audit" }
     ];
 
     const renderMenuButton = (label: string, path: string) => (
@@ -26,10 +19,10 @@ const Home = () => {
     return (
         <Container>
             <Typography variant="h2" gutterBottom>
-                Formula 1 APIs
+                RegTransfers
             </Typography>
             <Typography variant="body1" sx={{ marginBottom: 2 }}>
-                Welcome to the most accurate Formula 1 data!
+                Welcome to the world of plates!
             </Typography>
 
             <Stack spacing={2} alignItems="flex-start" sx={{ marginBottom: 2 }}>
@@ -53,7 +46,7 @@ const Home = () => {
                 <Button
                     variant="outlined"
                     color="primary"
-                    href="https://github.com/dietmar-schoder/Formula1"
+                    href="https://github.com/danielschoder/RT-UI"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
