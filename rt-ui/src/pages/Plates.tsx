@@ -3,6 +3,10 @@ import { PlateBasicDto } from '../interfaces/PlateBasicDto.ts';
 import BaseListPage from './BaseListPage.tsx';
 
 function Plates() {
+    const formatCurrency = (amount: number) => {
+        return `\u00A3${amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    };
+
     return (
         <BaseListPage<PlateBasicDto>
             title = "Plates"
@@ -11,9 +15,6 @@ function Plates() {
             renderList = {(plates) => (
                 <List>
                     {plates.map((plate) => (
-                    //    <ListItem key={plateBasicDto.id}>
-                    //        <ListItemText primary={plateBasicDto.registration} />
-                    //    </ListItem>
                         <ListItem key={plate.id} divider>
                             <ListItemText
                                 primary={
@@ -23,12 +24,14 @@ function Plates() {
                                 }
                                 secondary={
                                     <Typography component="span" variant="body2" color="textSecondary">
-                                        Purchase Price: £{plate.purchasePrice.toFixed(2)} | Sale Price: £{plate.salePrice.toFixed(2)}
+                                        Purchase Price: {formatCurrency(plate.purchasePrice)} |
+                                        Sale Price: {formatCurrency(plate.salePrice)}
                                         {plate.status === 1 && " | Reserved"}
                                     </Typography>
                                 }
                             />
-                        </ListItem>                    ))}
+                        </ListItem>
+                    ))}
                 </List>
             )}
         />

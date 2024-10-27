@@ -15,7 +15,7 @@ interface BaseListPage<T> {
 
 function DataPage<T>({ title, serviceUrl, endpoint, renderList }: BaseListPage<T>) {
     const [pageNumber, setPageNumber] = useState(1);
-    const pageSize = 20;
+    const pageSize = 10;
     const apiUrl = `${serviceUrl}${endpoint}?pageNumber=${pageNumber}&pageSize=${pageSize}&sortOrder=RegistrationAsc`;
     const { result, loading, error } = useFetchData<PaginatedResult<T>>(apiUrl);
     const navigate = useNavigate();
@@ -44,19 +44,21 @@ function DataPage<T>({ title, serviceUrl, endpoint, renderList }: BaseListPage<T
                     {endpoint}
                 </Button>
             </Box>
-            <Typography variant="h2" gutterBottom>
+            <Typography variant="h2">
                 {title}
             </Typography>
             {result ? renderList(result.data) : null}
-            {result && (
-                <Pagination
-                    count={Math.ceil(result.totalRecords / result.pageSize)}
-                    page={result.currentPage}
-                    onChange={handlePageChange}
-                    variant="outlined"
-                    shape="rounded"
-                />
-            )}
+            <Box mb={4}>
+                {result && (
+                    <Pagination
+                        count={Math.ceil(result.totalRecords / result.pageSize)}
+                        page={result.currentPage}
+                        onChange={handlePageChange}
+                        variant="outlined"
+                        shape="rounded"
+                    />
+                    )}
+            </Box>
         </Container>
     );
 }

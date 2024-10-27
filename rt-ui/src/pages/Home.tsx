@@ -34,11 +34,22 @@ const Home = () => {
                 <Button
                     variant="outlined"
                     color="primary"
-                    href={apiUrl}
+                    href="http://localhost:5101/swagger"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    API documentation
+                    Plates API Swagger
+                </Button>
+            </Typography>
+            <Typography sx={{ marginBottom: 2 }}>
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    href="https://localhost:7168/swagger"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Audit API Swagger
                 </Button>
             </Typography>
             <Typography sx={{ marginBottom: 2 }}>
