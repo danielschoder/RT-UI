@@ -29,7 +29,7 @@ const App = () => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" component="div">
-                        Formula 1 APIs
+                        RegTransfers Daniel Schoder
                     </Typography>
                 </Toolbar>
             </AppBar>

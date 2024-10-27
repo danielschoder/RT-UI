@@ -1,8 +1,9 @@
+import { Box, Button, Container, Pagination, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { Container, Typography, Button, Pagination } from '@mui/material';
-import { useFetchData } from '../hooks/useFetchData';
-import Loading from '../components/Loading';
+import { useNavigate } from 'react-router-dom';
 import Error from '../components/Error';
+import Loading from '../components/Loading';
+import { useFetchData } from '../hooks/useFetchData';
 import { PaginatedResult } from '../interfaces/PaginatedResultDto';
 
 interface BaseListPage<T> {
@@ -17,6 +18,7 @@ function DataPage<T>({ title, serviceUrl, endpoint, renderList }: BaseListPage<T
     const pageSize = 20;
     const apiUrl = `${serviceUrl}${endpoint}?pageNumber=${pageNumber}&pageSize=${pageSize}&sortOrder=RegistrationAsc`;
     const { result, loading, error } = useFetchData<PaginatedResult<T>>(apiUrl);
+    const navigate = useNavigate();
 
     if (loading) { return <Loading />; }
     if (error) { return <Error error={error} />; }
@@ -27,10 +29,10 @@ function DataPage<T>({ title, serviceUrl, endpoint, renderList }: BaseListPage<T
 
     return (
         <Container>
-            <Typography variant="h2" gutterBottom>
-                {title}
-            </Typography>
-            <Typography gutterBottom>
+            <Box display="flex" alignItems="center" gap={2} mb={2}>
+                <Button variant="contained" color="primary" onClick={() => navigate('/')}>
+                    Back
+                </Button>
                 <Button
                     variant="outlined"
                     color="primary"
@@ -41,6 +43,9 @@ function DataPage<T>({ title, serviceUrl, endpoint, renderList }: BaseListPage<T
                 >
                     {endpoint}
                 </Button>
+            </Box>
+            <Typography variant="h2" gutterBottom>
+                {title}
             </Typography>
             {result ? renderList(result.data) : null}
             {result && (
