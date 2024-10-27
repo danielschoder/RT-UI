@@ -1,18 +1,16 @@
 import { List, ListItem, ListItemText } from '@mui/material';
-import { PaginatedResult } from '../interfaces/PaginatedResultDto.ts';
 import { PlateBasicDto } from '../interfaces/PlateBasicDto.ts';
 import BaseListPage from './BaseListPage.tsx';
 
 function Plates() {
     return (
-        <BaseListPage<PaginatedResult<PlateBasicDto>>
+        <BaseListPage<PlateBasicDto>
             title = "Plates"
             serviceUrl= "http://localhost:5101"
-            endpoint= '/api/plates?pageNumber=1&pageSize=20&sortOrder=RegistrationAsc'
-            // url='/api/plates?pageNumber={pageNumber}&pageSize={pageSize}&sortOrder={sortOrder}'
-            renderList = {(paginatedResult) => (
+            endpoint= "/api/plates"
+            renderList = {(plates) => (
                 <List>
-                    {paginatedResult.data.map((plateBasicDto) => (
+                    {plates.map((plateBasicDto) => (
                         <ListItem key={plateBasicDto.id}>
                             <ListItemText primary={plateBasicDto.registration} />
                         </ListItem>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export function useFetchData<T>(url: string) {
-    const [data, setData] = useState<T | null>(null);
+    const [result, setData] = useState<T | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -13,8 +13,8 @@ export function useFetchData<T>(url: string) {
                 }
                 return response.json();
             })
-            .then((data: T) => {
-                setData(data);
+            .then((result: T) => {
+                setData(result);
                 setLoading(false);
             })
             .catch((error) => {
@@ -23,5 +23,5 @@ export function useFetchData<T>(url: string) {
             });
     }, [url]);
 
-    return { data, loading, error };
+    return { result, loading, error };
 }

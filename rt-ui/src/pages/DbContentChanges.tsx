@@ -1,17 +1,16 @@
 import { List, ListItem, ListItemText } from '@mui/material';
 import { DbContentChangeDto } from '../interfaces/DbContentChangeDto';
-import { PaginatedResult } from '../interfaces/PaginatedResultDto';
 import BaseListPage from './BaseListPage';
 
 function DbContentChanges() {
     return (
-        <BaseListPage<PaginatedResult<DbContentChangeDto>>
+        <BaseListPage<DbContentChangeDto>
             title = "Database Content Changes"
             serviceUrl= "https://localhost:7168"
-            endpoint = "/api/dbcontentchanges?pageNumber=1&pageSize=10"
-            renderList = {(paginatedResult) => (
+            endpoint = "/api/dbcontentchanges"
+            renderList = {(dbcontentchanges) => (
                 <List>
-                    {paginatedResult.data.map((dbContentChange) => (
+                    {dbcontentchanges.map((dbContentChange) => (
                         <ListItem key={dbContentChange.id}>
                             <ListItemText primary={dbContentChange.entityId} />
                         </ListItem>
