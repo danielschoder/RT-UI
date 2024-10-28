@@ -54,7 +54,7 @@ const Home = () => {
                 <Button
                     variant="outlined"
                     color="primary"
-                    href="https://github.com/danielschoder/RT-UI"
+                    href="https://github.com/danielschoder/RT"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
